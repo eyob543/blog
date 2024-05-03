@@ -57,18 +57,20 @@ export default function Home() {
                       }}
                     >
                       <CardContent>
-                        <Typography
-                          variant="h4"
-                          sx={{
-                            fontWeight: 600,
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 4,
-                          }}
-                        >
-                          {blog.title}
-                        </Typography>
-                        {blog.imageURL ? (
+                        {blog !== undefined && (
+                          <Typography
+                            variant="h4"
+                            sx={{
+                              fontWeight: 600,
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 4,
+                            }}
+                          >
+                            {blog.title}
+                          </Typography>
+                        )}
+                        {blog !== undefined && blog.imageURL !== "" ? (
                           <CardMedia
                             component="img"
                             image={blog.imageURL}
@@ -81,12 +83,16 @@ export default function Home() {
                             width={200}
                           />
                         )}
-                        <Typography sx={{ fontSize: 14 }}>
-                          {_.truncate(blog.description)}
-                        </Typography>
-                        <Typography sx={{ fontSize: 12 }}>
-                          {blog.user}
-                        </Typography>
+                        {blog !== undefined && (
+                          <Typography sx={{ fontSize: 14 }}>
+                            {_.truncate(blog.description)}
+                          </Typography>
+                        )}
+                        {blog !== undefined && (
+                          <Typography sx={{ fontSize: 12 }}>
+                            {blog.user}
+                          </Typography>
+                        )}
                       </CardContent>
                       <CardActions>
                         <Button
